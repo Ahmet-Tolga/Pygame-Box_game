@@ -23,8 +23,8 @@ pygame.display.set_caption("Box Game Master")
 # Renkler
 rect_color = ["red", "blue", "yellow", "purple", (204, 0, 102), "green", "brown", (64, 224, 208), (128, 128, 128), "orange"]
 color_index = random.randrange(len(rect_color))
-x = random.randrange(100, 700)
-y = random.randrange(100, 500)
+x = random.randrange(100, 600)
+y = random.randrange(100, 550)
 
 # Sesler
 sound1 = pygame.mixer.Sound("sound1.wav")
@@ -54,14 +54,14 @@ while running:
         high_score_rect = high_score.render("High Score: {}".format(data[0][0]), True, "black")
         if round(120 - (tm.time() - clock)) <= 0:
             started = True
-        box_size = int(screen_width * 0.1)
+        box_size = int(screen_width * 0.2)
         box = pygame.draw.rect(color=rect_color[color_index], surface=screen, rect=(x, y, box_size, box_size), width=0, border_radius=10)
         box_letter = pygame.font.SysFont("Calibri", int(screen_height * 0.08))
         box_letter_rect = box_letter.render(str(counter), True, "white")
         score_text_rect = score_text.render("Score:{}".format(str(score)), True, "black")
         screen.blit(start_time_cor, (int(screen_width * 0.4), int(screen_height * 0.02)))
         screen.blit(box_letter_rect, (x + int(box_size * 0.15), y + int(box_size * 0.1)))
-        screen.blit(score_text_rect, (int(screen_width * 0.02), int(screen_height * 0.02)))
+        screen.blit(score_text_rect, (int(screen_width * 0.015), int(screen_height * 0.015)))
         screen.blit(high_score_rect, (int(screen_width * 0.02), int(screen_height * 0.07)))
         pygame.display.update()
         for e in pygame.event.get():
@@ -83,8 +83,8 @@ while running:
                             connection.commit()
                         score_text_rect = score_text.render("Score:{}".format(str(score)), True, "black")
                         color_index = random.randrange(len(rect_color))
-                        x = random.randrange(100, 700)
-                        y = random.randrange(100, 500)
+                        x = random.randrange(100, 600)
+                        y = random.randrange(100, 550)
                         box = pygame.draw.rect(color=rect_color[color_index], surface=screen, rect=(x, y, box_size, box_size), width=0, border_radius=10)
                         box_letter_rect = box_letter.render(str(counter), True, "white")
     else:
